@@ -79,14 +79,22 @@ async function handleSubmit(id = null) {
     const method = id ? "PUT" : "POST";
     const url = id ? `${apiUrl}/${id}` : `${apiUrl}/create`;
 
-    const formData = {};
-    new FormData(propertyForm).forEach((value, key) => {
-      if (key !== "image") {
-        formData[key] = ["rent", "available", "featured"].includes(key)
-          ? value === "on"
-          : value;
-      }
-    });
+    const formData = {
+      code: document.getElementById("code").value.trim(),
+      title: document.getElementById("title").value.trim(),
+      type: document.getElementById("type").value.trim(),
+      price: document.getElementById("price").value.trim(),
+      bedrooms: document.getElementById("bedrooms").value.trim(),
+      bathrooms: document.getElementById("bathrooms").value.trim(),
+      area: document.getElementById("area").value.trim(),
+      location: document.getElementById("location").value.trim(),
+      city: document.getElementById("city").value.trim(),
+      sector: document.getElementById("sector").value.trim(),
+      advisorWhatsapp: document.getElementById("advisorWhatsapp").value.trim(),
+      rent: document.getElementById("rent").checked,
+      available: document.getElementById("available").checked,
+      featured: document.getElementById("featured").checked,
+    };
 
     if (imageUrl) formData.image = imageUrl;
 
@@ -119,7 +127,11 @@ saveBtn.addEventListener("click", async () => {
 // Botón para actualizar propiedad existente
 updateBtn.addEventListener("click", async () => {
   const id = propertyForm.getAttribute("data-id");
-  if (!id) return showAlert("Debe buscar primero una propiedad para actualizar", "warning");
+  if (!id)
+    return showAlert(
+      "Debe buscar primero una propiedad para actualizar",
+      "warning"
+    );
   await handleSubmit(id);
 });
 
