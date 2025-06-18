@@ -11,6 +11,8 @@ const propertyForm = document.getElementById("propertyForm");
 const searchBtn = document.getElementById("searchBtn");
 const deleteBtn = document.getElementById("deleteBtn");
 const resetBtn = document.getElementById("resetBtn");
+const saveBtn = document.getElementById("saveBtn");
+const updateBtn = document.getElementById("updateBtn");
 const imageInput = document.getElementById("image");
 
 // Mostrar alerta
@@ -67,16 +69,13 @@ async function uploadImage() {
 
   if (!res.ok) throw new Error("Error al subir imagen");
   const data = await res.json();
-  return data.url; // Asegúrate de que tu backend devuelve { url: "..." }
+  return data.url;
 }
 
-// Guardar o actualizar propiedad
-propertyForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
-
+// Función común para guardar o actualizar
+async function handleSubmit(id = null) {
   try {
     const imageUrl = await uploadImage();
-    const id = propertyForm.getAttribute("data-id");
     const method = id ? "PUT" : "POST";
     const url = id ? `${apiUrl}/${id}` : `${apiUrl}/create`;
 
@@ -109,6 +108,19 @@ propertyForm.addEventListener("submit", async (e) => {
     console.error("Error al guardar:", err);
     showAlert("Error al guardar la propiedad", "danger");
   }
+}
+
+// Botón para crear nueva propiedad
+saveBtn.addEventListener("click", async () => {
+  propertyForm.removeAttribute("data-id");
+  await handleSubmit();
+});
+
+// Botón para actualizar propiedad existente
+updateBtn.addEventListener("click", async () => {
+  const id = propertyForm.getAttribute("data-id");
+  if (!id) return showAlert("Debe buscar primero una propiedad para actualizar", "warning");
+  await handleSubmit(id);
 });
 
 // Eliminar propiedad

@@ -11,13 +11,18 @@
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
-    <div class="container d-flex justify-content-center align-items-start min-vh-100 py-5">
+    <div
+      class="container d-flex justify-content-center align-items-start min-vh-100 py-5"
+    >
       <div class="form-container">
         <h2 class="mb-4 text-center">Gestión de Propiedad</h2>
 
         <div id="alertContainer"></div>
 
-        <button class="back-button mb-4" onclick="window.location.href='dashboard.html'">
+        <button
+          class="back-button mb-4"
+          onclick="window.location.href='dashboard.html'"
+        >
           ← Volver al Dashboard
         </button>
 
@@ -25,29 +30,63 @@
           <div class="row g-3">
             <div class="col-md-6">
               <label for="code" class="form-label">Código</label>
-              <input type="text" class="form-control" id="code" name="code" required />
+              <input
+                type="text"
+                class="form-control"
+                id="code"
+                name="code"
+                required
+              />
             </div>
             <div class="col-md-6">
               <label for="title" class="form-label">Título</label>
-              <input type="text" class="form-control" id="title" name="title" required />
+              <input
+                type="text"
+                class="form-control"
+                id="title"
+                name="title"
+                required
+              />
             </div>
 
             <div class="col-md-6">
               <label for="type" class="form-label">Tipo</label>
-              <input type="text" class="form-control" id="type" name="type" required />
+              <input
+                type="text"
+                class="form-control"
+                id="type"
+                name="type"
+                required
+              />
             </div>
             <div class="col-md-6">
               <label for="price" class="form-label">Precio</label>
-              <input type="number" class="form-control" id="price" name="price" required />
+              <input
+                type="number"
+                class="form-control"
+                id="price"
+                name="price"
+                required
+              />
             </div>
 
             <div class="col-md-6">
               <label for="bedrooms" class="form-label">Habitaciones</label>
-              <input type="number" class="form-control" id="bedrooms" name="bedrooms" />
+              <input
+                type="number"
+                class="form-control"
+                id="bedrooms"
+                name="bedrooms"
+              />
             </div>
             <div class="col-md-6">
               <label for="bathrooms" class="form-label">Baños</label>
-              <input type="number" class="form-control" id="bathrooms" name="bathrooms" />
+              <input
+                type="number"
+                class="form-control"
+                id="bathrooms"
+                name="bathrooms"
+              />
             </div>
 
             <div class="col-md-6">
@@ -56,7 +95,12 @@
             </div>
             <div class="col-md-6">
               <label for="location" class="form-label">Ubicación</label>
-              <input type="text" class="form-control" id="location" name="location" />
+              <input
+                type="text"
+                class="form-control"
+                id="location"
+                name="location"
+              />
             </div>
 
             <div class="col-md-6">
@@ -65,43 +109,89 @@
             </div>
             <div class="col-md-6">
               <label for="sector" class="form-label">Sector</label>
-              <input type="text" class="form-control" id="sector" name="sector" />
+              <input
+                type="text"
+                class="form-control"
+                id="sector"
+                name="sector"
+              />
             </div>
 
             <div class="col-md-6">
-              <label for="advisorWhatsapp" class="form-label">WhatsApp Asesor</label>
-              <input type="text" class="form-control" id="advisorWhatsapp" name="advisorWhatsapp" />
+              <label for="advisorWhatsapp" class="form-label"
+                >WhatsApp Asesor</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="advisorWhatsapp"
+                name="advisorWhatsapp"
+              />
             </div>
             <div class="col-md-6">
               <label for="image" class="form-label">Imagen</label>
-              <input type="file" class="form-control" id="image" name="image" accept="image/*" />
+              <input
+                type="file"
+                class="form-control"
+                id="image"
+                name="image"
+                accept="image/*"
+              />
             </div>
 
             <div class="col-md-4">
               <div class="form-check mt-2">
-                <input class="form-check-input" type="checkbox" id="rent" name="rent" />
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="rent"
+                  name="rent"
+                />
                 <label class="form-check-label" for="rent">En arriendo</label>
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-check mt-2">
-                <input class="form-check-input" type="checkbox" id="available" name="available" />
-                <label class="form-check-label" for="available">Disponible</label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="available"
+                  name="available"
+                />
+                <label class="form-check-label" for="available"
+                  >Disponible</label
+                >
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-check mt-2">
-                <input class="form-check-input" type="checkbox" id="featured" name="featured" />
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="featured"
+                  name="featured"
+                />
                 <label class="form-check-label" for="featured">Destacada</label>
               </div>
             </div>
           </div>
 
           <div class="button-group mt-4">
-            <button type="submit" class="btn btn-success">Guardar</button>
-            <button type="button" id="searchBtn" class="btn btn-primary">Buscar</button>
-            <button type="button" id="deleteBtn" class="btn btn-danger">Eliminar</button>
-            <button type="button" id="resetBtn" class="btn btn-secondary">Limpiar</button>
+            <button type="button" id="saveBtn" class="btn btn-success">
+              Guardar
+            </button>
+            <button type="button" id="updateBtn" class="btn btn-warning">
+              Actualizar
+            </button>
+            <button type="button" id="searchBtn" class="btn btn-primary">
+              Buscar
+            </button>
+            <button type="button" id="deleteBtn" class="btn btn-danger">
+              Eliminar
+            </button>
+            <button type="button" id="resetBtn" class="btn btn-secondary">
+              Limpiar
+            </button>
           </div>
         </form>
       </div>
