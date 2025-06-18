@@ -5,7 +5,7 @@ if (!token) {
 }
 
 const apiUrl = "https://surpropiedades-backend.onrender.com/api/properties";
-const uploadUrl = "https://surpropiedades-backend.onrender.com/api/upload-image";
+const uploadUrl = "https://surpropiedades-backend.onrender.com/api/upload";
 
 const propertyForm = document.getElementById("propertyForm");
 const searchBtn = document.getElementById("searchBtn");
