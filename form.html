@@ -197,6 +197,40 @@
       </div>
     </div>
 
+    <!-- Modal de Confirmación -->
+    <div
+      class="modal fade"
+      id="confirmDeleteModal"
+      tabindex="-1"
+      aria-labelledby="confirmDeleteLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center">
+          <div class="modal-header border-0">
+            <h5 class="modal-title w-100" id="confirmDeleteLabel">
+              ¿Estás seguro?
+            </h5>
+          </div>
+          <div class="modal-body">
+            <p>Esta acción eliminará la propiedad de forma permanente.</p>
+          </div>
+          <div class="modal-footer justify-content-center border-0">
+            <button type="button" class="btn btn-danger" id="confirmDeleteBtn">
+              Sí, eliminar
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancelar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="js/form.js"></script>
   </body>
 </html>

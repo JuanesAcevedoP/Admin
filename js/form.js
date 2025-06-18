@@ -135,30 +135,38 @@ updateBtn.addEventListener("click", async () => {
   await handleSubmit(id);
 });
 
-// Eliminar propiedad
-deleteBtn.addEventListener("click", async () => {
+// Mostrar el modal de confirmación
+deleteBtn.addEventListener("click", () => {
   const id = propertyForm.getAttribute("data-id");
   if (!id) return showAlert("Busque una propiedad primero", "warning");
 
-  if (!confirm("¿Está seguro de eliminar esta propiedad?")) return;
+  const deleteModal = new bootstrap.Modal(
+    document.getElementById("confirmDeleteModal")
+  );
+  deleteModal.show();
 
-  try {
-    const res = await fetch(`${apiUrl}/${id}`, {
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+  // Al confirmar la eliminación
+  const confirmBtn = document.getElementById("confirmDeleteBtn");
+  confirmBtn.onclick = async () => {
+    try {
+      const res = await fetch(`${apiUrl}/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
-    if (!res.ok) throw new Error("Error al eliminar");
+      if (!res.ok) throw new Error("Error al eliminar");
 
-    showAlert("Propiedad eliminada correctamente", "success");
-    propertyForm.reset();
-    propertyForm.removeAttribute("data-id");
-  } catch (err) {
-    console.error("Error al eliminar:", err);
-    showAlert("Error al eliminar la propiedad", "danger");
-  }
+      showAlert("Propiedad eliminada correctamente", "success");
+      propertyForm.reset();
+      propertyForm.removeAttribute("data-id");
+      deleteModal.hide();
+    } catch (err) {
+      console.error("Error al eliminar:", err);
+      showAlert("Error al eliminar la propiedad", "danger");
+    }
+  };
 });
 
 // Reiniciar formulario

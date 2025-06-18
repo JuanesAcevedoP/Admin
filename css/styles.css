@@ -204,3 +204,23 @@ input[type="checkbox"] {
     flex-direction: column;
   }
 }
+
+.modal-content {
+  background-color: #1e1e1e;
+  color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 0, 150, 0.4);
+}
+
+.modal-header h5,
+.modal-body p {
+  color: #ff69b4;
+}
+
+#confirmDeleteBtn {
+  background-color: #ff004f;
+  border: none;
+}
+#confirmDeleteBtn:hover {
+  background-color: #c7003b;
+}
