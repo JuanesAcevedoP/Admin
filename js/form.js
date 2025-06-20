@@ -70,9 +70,8 @@ async function uploadImage() {
   if (!res.ok) throw new Error("Error al subir imagen");
 
   const data = await res.json();
-  return data.url; // Cloudinary devuelve la URL pública directamente
+  return data.url;
 }
-
 
 // Función común para guardar o actualizar
 async function handleSubmit(id = null) {
@@ -80,6 +79,15 @@ async function handleSubmit(id = null) {
     const imageUrl = await uploadImage();
     const method = id ? "PUT" : "POST";
     const url = id ? `${apiUrl}/${id}` : `${apiUrl}/create`;
+
+    // Validación y formateo del número de WhatsApp
+    const rawPhone = document.getElementById("advisorWhatsapp").value.trim();
+    const countryCode = document.getElementById("countryCode").value;
+    const cleanedPhone = rawPhone.replace(/\D/g, "");
+
+    if (!/^\d{10}$/.test(cleanedPhone)) {
+      return showAlert("El número de WhatsApp debe tener exactamente 10 dígitos", "warning");
+    }
 
     const formData = {
       code: document.getElementById("code").value.trim(),
@@ -92,7 +100,7 @@ async function handleSubmit(id = null) {
       location: document.getElementById("location").value.trim(),
       city: document.getElementById("city").value.trim(),
       sector: document.getElementById("sector").value.trim(),
-      advisorWhatsapp: document.getElementById("advisorWhatsapp").value.trim(),
+      advisorWhatsapp: countryCode + cleanedPhone,
       rent: document.getElementById("rent").checked,
       available: document.getElementById("available").checked,
       featured: document.getElementById("featured").checked,

@@ -116,18 +116,40 @@
                 name="sector"
               />
             </div>
-
+            
             <div class="col-md-6">
               <label for="advisorWhatsapp" class="form-label"
                 >WhatsApp Asesor</label
               >
-              <input
-                type="text"
-                class="form-control"
-                id="advisorWhatsapp"
-                name="advisorWhatsapp"
-              />
+              <div class="input-group">
+                <select
+                  class="form-select"
+                  id="countryCode"
+                  name="countryCode"
+                  required
+                >
+                  <option value="+57" selected>🇨🇴 +57</option>
+                  <option value="+1">🇺🇸 +1</option>
+                  <option value="+52">🇲🇽 +52</option>
+                  <option value="+54">🇦🇷 +54</option>
+                  <option value="+34">🇪🇸 +34</option>
+                  <option value="+51">🇵🇪 +51</option>
+                </select>
+                <input
+                  type="tel"
+                  class="form-control"
+                  id="advisorWhatsapp"
+                  name="advisorWhatsapp"
+                  placeholder="Ej: 3147359634"
+                  pattern="[0-9]{10}"
+                  required
+                />
+              </div>
+              <div class="form-text">
+                Ingrese solo los 10 dígitos sin el símbolo + ni espacios.
+              </div>
             </div>
+
             <div class="col-md-6">
               <label for="image" class="form-label">Imagen</label>
               <input
