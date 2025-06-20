@@ -51,7 +51,7 @@ searchBtn.addEventListener("click", async () => {
   }
 });
 
-// Subir imagen a Storj
+// Subir imagen a Cloudinary
 async function uploadImage() {
   const file = imageInput.files[0];
   if (!file) return null;
@@ -68,9 +68,11 @@ async function uploadImage() {
   });
 
   if (!res.ok) throw new Error("Error al subir imagen");
+
   const data = await res.json();
-  return data.url;
+  return data.url; // Cloudinary devuelve la URL pública directamente
 }
+
 
 // Función común para guardar o actualizar
 async function handleSubmit(id = null) {
